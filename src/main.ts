@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module'
 
+// Bootstraps the Nest app and configures global runtime behavior.
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.setGlobalPrefix('api/v1', {
@@ -12,11 +13,12 @@ async function bootstrap() {
     ],
   })
 
+  // Exposes Swagger docs only in non-production environments.
   if (process.env.NODE_ENV !== 'production') {
     const config = new DocumentBuilder()
       .setTitle('Nest Blueprint API')
       .setDescription('API documentation')
-      .setVersion(process.env.npm_package_version ?? '0.0.1')
+      .setVersion('v1')
       .build()
     const document = SwaggerModule.createDocument(app, config)
     SwaggerModule.setup('docs', app, document)

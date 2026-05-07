@@ -4,9 +4,11 @@ import request from 'supertest'
 import { App } from 'supertest/types'
 import { AppModule } from './../src/app.module'
 
+// Validates end-to-end behavior of HTTP endpoints.
 describe('AppController (e2e)', () => {
   let app: INestApplication<App>
 
+  // Boots a fresh Nest application instance for each test.
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -16,6 +18,7 @@ describe('AppController (e2e)', () => {
     await app.init()
   })
 
+  // Confirms the root endpoint returns expected metadata.
   it('/ (GET)', () => {
     return request(app.getHttpServer())
       .get('/')
@@ -29,6 +32,7 @@ describe('AppController (e2e)', () => {
       })
   })
 
+  // Confirms the health endpoint returns a healthy status.
   it('/health (GET)', () => {
     return request(app.getHttpServer())
       .get('/health')
@@ -40,6 +44,7 @@ describe('AppController (e2e)', () => {
       })
   })
 
+  // Tears down the Nest application after each test.
   afterEach(async () => {
     await app.close()
   })
