@@ -1,4 +1,4 @@
-# Nest Codes
+# Nest Blueprint
 ### Install requirements
 ```
 npm install
