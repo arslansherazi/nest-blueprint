@@ -1,0 +1,30 @@
+---
+description: TypeScript/JavaScript coding conventions and style guidelines
+alwaysApply: true
+---
+
+# Code Style Guidelines
+
+## General Principles
+
+- Prefer consistency with the existing codebase over personal preference.
+- Favor readability, maintainability, and simplicity.
+- Avoid unnecessary complexity, abstraction, or premature optimization.
+- Write code that is easy to understand and modify by other developers.
+- Add comments only where they are needed: non-obvious behavior, important invariants, workarounds, or security/performance rationale.
+- Do not add comments that merely repeat what the code already says, or boilerplate on every function unless the project already requires it for public APIs.
+
+---
+
+## TypeScript and JavaScript
+
+### Semicolons
+
+- Omit statement-terminating semicolons when the project consistently follows ASI (Automatic Semicolon Insertion) style.
+
+```typescript
+// ❌ Avoid
+const x = 1;
+
+// ✅ Prefer
+const x = 1
